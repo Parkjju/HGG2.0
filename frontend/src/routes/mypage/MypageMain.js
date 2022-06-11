@@ -4,6 +4,7 @@ import Profile from '../../components/Mypage/Profile';
 import Header from '../../Header';
 import { Outlet, Link, useMatch } from 'react-router-dom';
 import styled from 'styled-components';
+import Navigation from '../../Navigation';
 
 const Tap = styled.div`
   width: 100%;
@@ -36,6 +37,7 @@ function Mypage() {
         </TapSelect>
       </Tap>
       <Outlet />
+      <Navigation />
     </Container>
   );
 }
