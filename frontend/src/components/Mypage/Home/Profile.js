@@ -1,5 +1,6 @@
+import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-import avatar from '../../images/Avatar.png';
+import avatar from '../../../images/Avatar.png';
 
 const ProfileBox = styled.div`
   width: 100%;
@@ -39,6 +40,14 @@ const AvatarActivityValue = styled.span`
   font-size: 16px;
 `;
 
+const ToSettingBtn = styled(Link)`
+  &:hover {
+    opacity: 0.7;
+  }
+  transition: 0.1s linear;
+  height: 12px;
+`;
+
 function Profile() {
   return (
     <ProfileBox>
@@ -55,7 +64,9 @@ function Profile() {
           </AvatarActivity>
         </AvatarNameBox>
       </AvatarInfo>
-      <span className="material-symbols-outlined">settings</span>
+      <ToSettingBtn to="setting">
+        <span className="material-symbols-outlined">settings</span>
+      </ToSettingBtn>
     </ProfileBox>
   );
 }
