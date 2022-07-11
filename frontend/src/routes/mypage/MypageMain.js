@@ -6,6 +6,7 @@ import { Outlet, Link, useMatch } from 'react-router-dom';
 import styled from 'styled-components';
 import Navigation from '../../Navigation';
 import MypageSetting from './MypageSetting';
+import { useEffect } from 'react';
 
 const Tap = styled.div`
   width: 100%;

@@ -5,7 +5,8 @@ import Mypage from './routes/mypage/MypageMain';
 import Post from './components/Mypage/Home/Post';
 import Comment from './components/Mypage/Home/Comment';
 import MypageSetting from './routes/mypage/MypageSetting';
-import SettingProfile from './components/Mypage/Setting/SettingProfile';
+import Review from './routes/review';
+import ReviewPost from './routes/review/reviewPost';
 
 function Router() {
   return (
@@ -18,6 +19,9 @@ function Router() {
           <Route path="comment" element={<Comment />} />
         </Route>
         <Route path="/mypage/setting" element={<MypageSetting />} />
+
+        <Route path="/review" element={<Review />} />
+        <Route path="/review/post" element={<ReviewPost />} />
       </Routes>
     </BrowserRouter>
   );

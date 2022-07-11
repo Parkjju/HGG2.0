@@ -4,8 +4,9 @@ const NavBox = styled.div`
   height: 68px;
   width: 100%;
   padding: 4px 12px;
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
   align-items: center;
 `;
 
@@ -16,9 +17,7 @@ function BackwardTitleBox({ title }) {
   return (
     <div>
       <NavBox>
-        <span style={{ position: 'relative', left: '-30vw' }} className="material-symbols-outlined">
-          arrow_back
-        </span>
+        <span className="material-symbols-outlined">arrow_back</span>
         <Title>{title}</Title>
       </NavBox>
     </div>
