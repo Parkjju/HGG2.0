@@ -1,11 +1,12 @@
-import Header from '../Header';
-import Navigation from '../Navigation';
-import MainContent from '../contents/MainContent';
+import Header from '../../components/Header';
+import Navigation from '../../components/Navigation';
+import GoodsCard from './Card';
 import styled from 'styled-components';
 
 const Container = styled.div`
   max-width: 480px;
   margin: 0 auto;
+  padding-top: 10px;
 `;
 
 function Main() {
@@ -13,7 +14,7 @@ function Main() {
     <Container>
       <Header />
       <Navigation />
-      <MainContent />
+      <GoodsCard />
     </Container>
   );
 }

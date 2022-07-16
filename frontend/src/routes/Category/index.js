@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import Backward from '../../components/Backward';
-import Navigation from '../../Navigation';
-import CategoryResult from './CategoryResult';
-import CategoryTitle from './CategoryTitle';
+import Navigation from '../../components/Navigation';
+import CategoryResult from './List';
+import CategoryTitle from './Title';
 
 const Container = styled.div`
   max-width: 480px;

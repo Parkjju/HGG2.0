@@ -1,6 +1,6 @@
-import Container from '../../components/Container';
-import Setting from '../../components/Mypage/Setting/Setting';
-import Header from '../../Header';
+import Container from '../../../components/Container';
+import Setting from '../Setting/Setting';
+import Header from '../../../components/Header';
 
 function MypageSetting() {
   return (

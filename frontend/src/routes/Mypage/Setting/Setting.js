@@ -1,4 +1,4 @@
-import Container from '../../Container';
+import Container from '../../../components/Container';
 import BackwardTitleBox from '../Home/BackwardTitleBox';
 import SettingMenu from './SettingMenu';
 

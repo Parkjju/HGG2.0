@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import jacket from '../../images/jacket.png';
+import jacket from '../../../images/jacket.png';
+
 const dummyResult = {
   img: '../../images/jacket.png',
   writer: '작성자',
