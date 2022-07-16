@@ -7,8 +7,8 @@ export const CardBox = styled.div`
 `;
 
 export const CardImg = styled.div`
-  background-color: var(--color-white);
-  border: 1px solid var(--color-grey);
+  background-color: #ffffff;
+  border: 1px solid #e3e3e3;
   border-radius: 8px;
   box-sizing: border-box;
   width: 160px;
