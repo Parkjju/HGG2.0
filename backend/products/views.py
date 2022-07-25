@@ -9,6 +9,9 @@ from rest_framework import status
 #in products dir
 from .models import Product
 from .serializers import ProductSerializer
+#datetime
+import datetime
+from django.utils import timezone
 # Create your views here.
 class ProductsView(APIView):
     def get(self, request):
@@ -43,8 +46,30 @@ class ProductView(APIView):
     def get(self, request, pk):
         product = self.get_product(pk)
         if product is not None:
+            #만료일 설정
+            expires = datetime.datetime.replace(timezone.datetime.now(), hour=23, minute=59, second=0)
+            str_expires = datetime.datetime.strftime(expires, "%a, %d-%b-%Y %H:%M:%S GMT")
             serializer = ProductSerializer(product)
-            return Response(data=serializer.data)
+            response = Response(data=serializer.data)
+            #쿠키 읽기 & 생성
+            if request.COOKIES.get('hit') is not None: #쿠키에 hit이 이미 있을 경우
+                cookies = request.COOKIES.get('hit')
+                cookies_list = cookies.split(',')
+                if str(pk) not in cookies_list:
+                    response.set_cookie('hit', cookies+f',{pk}', expires=str_expires)
+                    product.p_cnt += 1
+                    product.save()
+            else:#쿠키에 hit 값이 없을 경우(즉, 현재 보는 상품이 첫 상품일 때)
+                response.set_cookie('hit', pk, expires=expires)
+                product.p_cnt += 1
+                print("test")
+                product.save()
+            
+            #조회수 업데이트 후 다시 생성
+            serializer = ProductSerializer(product)
+            response.data = serializer.data
+
+            return response
         else:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
