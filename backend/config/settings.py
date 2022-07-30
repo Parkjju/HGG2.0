@@ -149,7 +149,7 @@ AUTH_USER_MODEL = "members.Member"
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         # 'rest_framework.authentication.BasicAuthentication',
-        # 'config.authentication.JWTAuthentication',
+        'config.authentication.JWTAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ]
 }
