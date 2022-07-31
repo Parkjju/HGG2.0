@@ -12,12 +12,21 @@ from .serializers import ProductSerializer
 #datetime
 import datetime
 from django.utils import timezone
+from django.db.models import Q
 # Create your views here.
 class ProductsView(APIView):
     def get(self, request):
         paginator = PageNumberPagination()
         paginator.page_size = 10
-        products = Product.objects.all()
+        #검색기능
+        search_query = request.GET.get("search", None)
+        if(search_query != None):
+            products = Product.objects.filter(
+                Q(p_title__contains = search_query)|
+                Q(p_content__contains = search_query)
+            )
+        else:
+            products = Product.objects.all()
         results = paginator.paginate_queryset(products, request)
         serializer = ProductSerializer(results, many=True)
         return paginator.get_paginated_response(data=serializer.data)
@@ -96,3 +105,21 @@ class ProductView(APIView):
                 return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         else:
             return Response(status=status.HTTP_404_NOT_FOUND)
+
+class AscendPriceView(APIView):
+    def get(self, request):
+        paginator = PageNumberPagination()
+        paginator.page_size = 10
+        products = Product.objects.all().order_by("p_price", "-p_updated")
+        results = paginator.paginate_queryset(products, request)
+        serializer = ProductSerializer(results, many=True)
+        return paginator.get_paginated_response(data=serializer.data)
+
+class DescendPriceView(APIView):
+    def get(self, request):
+        paginator = PageNumberPagination()
+        paginator.page_size = 10
+        products = Product.objects.all().order_by("-p_price", "-p_updated")
+        results = paginator.paginate_queryset(products, request)
+        serializer = ProductSerializer(results, many=True)
+        return paginator.get_paginated_response(data=serializer.data)
