@@ -170,5 +170,5 @@ cython_debug/
 [Ss]cripts
 pyvenv.cfg
 pip-selfcheck.json
-
+../backend/product_pics
 # End of https://www.toptal.com/developers/gitignore/api/python,venv
